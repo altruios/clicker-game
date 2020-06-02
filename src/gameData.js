@@ -6,128 +6,64 @@ const gameData={
 		[
 			{
 			name:"fountain of Grey",
-			buyPrice:{grey: 10, red: 0, green:0, blue: 0},
+			buyPrice:[{name:"grey", cost: 1}],
 			count:0,
-			subjectsOfIncrease:["red, green, blue"],
+			subjectsOfIncrease:[{name:"grey", amount: 0.1, max: 120}],
+			increaseRatio:0.1,
          	isBuyable:false,
             sellPrice:0.5, 
            	isUnlocked:true
            },
 
-
 			{
 			name:"fountain of red",
-			buyPrice:{grey: 10, red: 10, green:0, blue: 0},
+			buyPrice:[{name:"grey", cost: 0.5}, {name:"red", cost: 1}],
 			count:0,
-			subjectsOfIncrease:["red, purple"],
+			subjectsOfIncrease:[{name:"red", amount: 0.1, max: 100}],
+			increaseRatio:2,
          	isBuyable:false,
             sellPrice:0.5, 
            	isUnlocked:false
-         	 },
-			{
-			name:"fountain of blue",
-			buyPrice:{grey: 10, red: 0, green:0, blue: 10},
-			count:0,
-			subjectsOfIncrease:["blue, purple"],
-         	isBuyable:false,
-            sellPrice:5, 
-           	isUnlocked:false,
-         	 },
-         	{
-			name:"fountain of green",
-			buyPrice:{grey: 10, red: 0, green:10, blue: 0},
-			count:0,
-			subjectsOfIncrease:["green, turquoise"],
-         	isBuyable:true,
-            sellPrice:50, 
-           	isUnlocked:false
          	 }
+		
 		],
 	clickerData:
 		[
 			{
 			name:"grey",
-			subjectsOfIncrease:["grey"],
+			building:false,
+			subjectsOfIncrease:[{name:"grey", amount: 0.1, max: 10}],
            	isUnlocked:true,
-           	value:1
+           	amount:1
            },
            	{
 			name:"red",
-			subjectsOfIncrease:["red"],
+			building:true,
+			subjectsOfIncrease:[{name:"red", amount: 0.1, max:10}],
            	isUnlocked:false,
-           	value:1
-           },
-           	{
-			name:"green",
-			subjectsOfIncrease:["green"],
-           	isUnlocked:false,
-           	value:1
-           },
-            {
-			name:"blue",
-			subjectsOfIncrease:["blue"],
-           	isUnlocked:false,
-           	value:1
-           }
+           	amount:1
+           }           
 
 		],
 	resourceData:
 		[
 			{	
 			name:"grey",
-			resouceMax:100,
+			max:100,
 			isUnlocked:true,
-			changePerTick:0,
-         	counterTillStopped:100,
+			changePerTick:0.001,
          	amount:0
          	},
 			{
 			name:"red",
-			resouceMax:100,
+			max:100,
 			isUnlocked:true,
 			changePerTick:0,
-         	counterTillStopped:100,
-         	         	amount:0
+         	amount:0
 
            
-         	 },
-			{
-			name:"green",
-			resouceMax:100,
-			isUnlocked:true,
-			changePerTick:0,
-         	counterTillStopped:100,
-         	         	amount:0
-
-         	 },
-         	{
-			name:"blue",
-			resouceMax:100,
-			isUnlocked:true,
-			changePerTick:0,
-         	counterTillStopped:100,
-         	         	amount:0
-
-         	 },
-         	 {
-         	 name:"purple",
-			resouceMax:100,
-			isUnlocked:false,
-			changePerTick:0,
-         	counterTillStopped:100,
-         	         	amount:0
-
          	 }
-         	 ,{
-         	 name:"turquoise",
-			resouceMax:100,
-			isUnlocked:false,
-			changePerTick:0,
-         	counterTillStopped:100,
-         	         	amount:0
-
-         	 }
-
+         	
 		]
 	}
 
