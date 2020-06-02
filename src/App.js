@@ -25,10 +25,15 @@ class App extends React.Component
   gameTime()
     {
     const gameTick = setInterval(()=>
-        {
-        this.state.resources.forEach(resource=>this.tickResource(resource));
-        this.state.buildings.forEach(building=>this.checkBuyingStatus(building));
-      },100);
+      {
+
+      this.state.resources.forEach(resource=>this.tickResource(resource));
+    },1000);
+    const checkTicks = setInterval(()=>
+      {
+      this.state.buildings.forEach(building=>this.checkBuyingStatus(building));
+    },100);
+
   }
 
   tickResource(resource)
@@ -63,27 +68,12 @@ class App extends React.Component
       const unlocks = targetBuilding.unlocks;
       if(unlocks.length>0)
         {
-        unlocks.forEach(whatToUnlock=>
-          {
-          if(whatToUnlock.type == "resource")
-            {
-            this.setState((prevState)=>
-              {
-              const newResources = prevState.resources.map(resource=>
-                {
-                if(whatToUnlock.name === resource.name)
-                  {
-                  resource.isUnlocked = true;
-                }
-                return resource;
-              });
-              return {resources:newResources}
-            });
-          }
+        unlocks.forEach(whatToUnlock=>this.unlock(whatToUnlock));
+      
+         }
 
 
-        });
-      }
+      
       this.buy(targetBuilding);
     }
   }
@@ -97,26 +87,25 @@ class App extends React.Component
      
       const newResources= prevState.resources.map(resource=>
         {
-        const targetCost = increaseObjectArray.find(x=>x.name === resource.name);
-        if(targetCost)
+        const targetCost = costObjectArray.find(x=>x.name === resource.name);    
+        const targetIncrease = increaseObjectArray.find(x=>x.name===resource.name);
+        if(targetIncrease)
           {
-           console.log(targetCost.amount, resource.max)
-           console.log(resource.amount);
-           console.log(building.subjectsOfIncrease.find(x=>x.name===resource.name).max) 
-          resource.amount = Number((resource.amount - targetCost.amount).toFixed(4));
-          console.log(resource.amount);
-
+           console.log("increasing the maximum of resource:",resource) 
           const buildingCount = (building.count + 1);
           const subject = building.subjectsOfIncrease.find(x=>x.name===resource.name);
-          console.log("subject", subject);
-          console.log(buildingCount);
           const subMax = subject.max;
           const subAmount = subject.amount;
-          console.log(subAmount);
-          console.log(resource.max);
-          resource.max = Number((resource.max + buildingCount * subMax).toFixed(4));
-          resource.changePerTick = Number((0.001 + buildingCount*subAmount).toFixed(5));
+          resource.max = Number((resource.max + subMax).toFixed(4));
+          resource.changePerTick = Number((resource.changePerTick + subAmount).toFixed(5));
         }
+        if(targetCost)
+          {
+           console.log("this costs this much:", resource.name, targetCost.cost) 
+          resource.amount = Number((resource.amount - targetCost.cost).toFixed(4)); 
+        }
+
+
         return resource;
       });
       const newBuildings = prevState.buildings.map(build=>
@@ -142,13 +131,25 @@ class App extends React.Component
   } 
   unlock(whatToUnlock)
     {
-    
-  } 
+    if(whatToUnlock.type == "resource")
+      {
+      this.setState((prevState)=>
+        {
+        const newResources = prevState.resources.map(resource=>
+          {
+          if(whatToUnlock.name === resource.name)
+            {
+            resource.isUnlocked = true;
+          }
+          return resource;
+        });
+        return {resources:newResources}
+      });
+    } 
+  }
   handleClicker(event)
     {
     const {name, value} = event.target;  
-    console.log("clicked:", name);
-    console.log(this.state); 
     this.setState(prevState=>
       {
       const targetClicker = prevState.clickers.find(x=>x.name ===name);
@@ -160,11 +161,12 @@ class App extends React.Component
             resource.amount = Number(Math.min(resource.max,resource.amount + targetIncrease.amount).toFixed(4));
           }
           return resource;
-        })
+        });
 
 
       return {resources:newResources}
-    })
+    });
+
   }
 
   checkBuyingStatus(building)
@@ -226,7 +228,7 @@ class App extends React.Component
       {
       return(
         <Building 
-
+          key={buildingData.id}
           name ={buildingData.name}
           handleBuildingBuy={this.handleBuildingBuy}
           buyPrice={buildingData.buyPrice}
@@ -234,15 +236,12 @@ class App extends React.Component
           subjectsOfIncrease = {buildingData.subjectsOfIncrease}
           isBuyable = {buildingData.isBuyable}
           isUnlocked = {buildingData.isUnlocked}
-          key={buildingData.name}
           
         />)
     });
     const resources = this.state.resources.map(resourceData=>
       {
-
-        return(
-
+      return(
         <Resource 
           name ={resourceData.name}
           max = {resourceData.max}
@@ -253,7 +252,6 @@ class App extends React.Component
 
         />)
     });   
-
     const clickers = this.state.clickers.map(clickerData=>
       {
       return(
@@ -265,20 +263,15 @@ class App extends React.Component
         />
 
       )
-    })
-
-
-
-
-  return (
-
-        <div className="App">
+    });
+    return (
+      <div className="App">
+        <div className="title">COLOR CLICKER</div>
         <div className="buildingContainer">{buildings}</div>
         <div className="resourceContainer">{resources}</div>
         <div className="clickerContainer">{clickers}</div>
-        </div>
-       );
-      }
-    
+      </div>
+    );
+  } 
 }
 export default App;

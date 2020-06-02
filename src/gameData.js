@@ -5,53 +5,53 @@ const gameData={
 	buildingData:
 		[
 			{
+			id:0,	
 			name:"fountain of Grey",
 			buyPrice:[{name:"grey", cost: 1}],
 			count:0,
 			subjectsOfIncrease:[{name:"grey", amount: 0.01, max: 120}],
-						unlocks:[],
-
+			unlocks:[],
 			increaseRatio:1.3,
          	isBuyable:false,
            	isUnlocked:true
-           },
-
+        },
 			{
+			id:1,	
 			name:"fountain of red",
 			buyPrice:[{name:"grey", cost: 0.5}, {name:"red", cost: 1}],
 			count:0,
 			subjectsOfIncrease:[{name:"red", amount: 0.01, max: 120}],
-						unlocks:[],
-
+			unlocks:[],
 			increaseRatio:2,
          	isBuyable:false,
            	isUnlocked:false
-         	 },
-
+        },
 			{
+			id:2,	
 			name:"fountain of green",
 			buyPrice:[{name:"grey", cost: 0.5}, {name:"green", cost: 1}],
 			count:0,
 			subjectsOfIncrease:[{name:"green", amount: 0.01, max: 120}],
-						unlocks:[],
-
+			unlocks:[],
 			increaseRatio:2,
          	isBuyable:false,
            	isUnlocked:false
-         	 },
+        },
 
 			{
+			id:3,	
 			name:"fountain of blue",
 			buyPrice:[{name:"grey", cost: 0.5}, {name:"blue", cost: 1}],
 			count:0,
 			subjectsOfIncrease:[{name:"blue", amount: 0.01, max: 120}],
-						unlocks:[],
+			unlocks:[],
 
 			increaseRatio:2,
          	isBuyable:false,
            	isUnlocked:false
-         	 },
-         	 	{
+        },
+         	{
+         	id:4,	
 			name:"fountain of white",
 			buyPrice:[{name:"grey", cost: 0.5}, {name:"red", cost: 1},{name:"green", cost: 1},{name:"blue", cost: 1}],
 			count:0,
@@ -60,8 +60,9 @@ const gameData={
 			increaseRatio:2,
          	isBuyable:false,
            	isUnlocked:false
-         	 },
+        },
 			{
+			id:5,	
 			name:"fountain of purple",
 			buyPrice:[{name:"red", cost: 50}, {name:"blue", cost: 50}],
 			count:0,
@@ -70,9 +71,9 @@ const gameData={
 			increaseRatio:2,
          	isBuyable:false,
            	isUnlocked:false
-         	 }
-         	 ,
+        },
 			{
+			id:6,	
 			name:"fountain of teal",
 			buyPrice:[{name:"green", cost: 50}, {name:"blue", cost: 50}],
 			count:0,
@@ -81,9 +82,9 @@ const gameData={
 			increaseRatio:2,
          	isBuyable:false,
            	isUnlocked:false
-         	 }
-         	 ,
+        },
 			{
+			id:7,	
 			name:"fountain of orange",
 			buyPrice:[{name:"red", cost: 50}, {name:"green", cost: 50}],
 			count:0,
@@ -92,8 +93,8 @@ const gameData={
 			increaseRatio:2,
          	isBuyable:false,
            	isUnlocked:false
-         	 }
-		],
+        }
+	],
 	clickerData:
 		[
 			{
@@ -102,30 +103,30 @@ const gameData={
 			subjectsOfIncrease:[{name:"grey", amount: 0.03, max: 10}],
            	isUnlocked:true,
            	amount:0.1
-           },
+        },
            	{
 			name:"red",
 			building:true,
 			subjectsOfIncrease:[{name:"red", amount: 0.01, max:10}],
            	isUnlocked:true,
            	amount:0.1
-           },
+        },
            	{
 			name:"green",
 			building:true,
 			subjectsOfIncrease:[{name:"green", amount: 0.01, max:10}],
            	isUnlocked:true,
            	amount:0.1
-           }     ,
+        },
            	{
 			name:"blue",
 			building:true,
 			subjectsOfIncrease:[{name:"blue", amount: 0.01, max:10}],
            	isUnlocked:true,
            	amount:0.1
-           }         
+        }         
 
-		],
+	],
 	resourceData:
 		[
 			{	
@@ -134,52 +135,52 @@ const gameData={
 			isUnlocked:true,
 			changePerTick:0.001,
          	amount:0
-         	},
+        },
 			{
 			name:"red",
 			max:100,
 			isUnlocked:true,
 			changePerTick:0,
          	amount:0
-         	 },
+        },
          	{	
 			name:"green",
 			max:100,
 			isUnlocked:true,
 			changePerTick:0,
          	amount:0
-         	},
+        },
          	{	
 			name:"blue",
 			max:100,
 			isUnlocked:true,
 			changePerTick:0,
          	amount:0
-         	},
+        },
          	{	
 			name:"purple",
 			max:90,
 			isUnlocked:false,
 			changePerTick:0,
          	amount:0
-         	},
+        },
          	{	
 			name:"teal",
 			max:90,
 			isUnlocked:false,
 			changePerTick:0,
          	amount:0
-         	},
+        },
          	{	
 			name:"orange",
 			max:90,
 			isUnlocked:false,
 			changePerTick:0,
          	amount:0
-         	}
+        }
          	
-		]
-	}
+	]
+}
 
 
 export default gameData
