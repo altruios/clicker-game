@@ -5,12 +5,13 @@ function Clicker(props)
 	
 	return(
 		<div>
-		{props.name}
-		<button 
+		<button
+			style={{backgroundColor:props.name}} 
+			className="clickerBTN"
 			name={props.name} 
 			onClick={props.handleClicker}
 			value={props.value} > 
-				{props.name} {props.value}
+				COLLECT {props.value}: {props.name} 
 	
 		</button>
 		</div>

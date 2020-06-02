@@ -11,3 +11,105 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.App{
+	display:grid;
+	grid-template-areas: 
+	"resourceContainer buildingContainer"
+	"resourceContainer clickerContainer";
+	grid-template-columns: 2fr 4fr;
+}
+
+
+.resourceContainer
+	{
+	grid-area:resourceContainer;
+	display: flex;
+	flex-flow:column nowrap;
+
+}
+.buildingContainer{
+	grid-area:buildingContainer;
+	display:flex;
+	flex-flow: row wrap;
+}
+.clickerContainer{
+	grid-area:clickerContainer;
+	display: flex;
+	flex-flow: row nowrap;
+}
+.building{
+	background-color: #ffffff;
+	border:solid;
+	display:grid;
+	grid-template-areas: 
+		"buildingTitle"
+		"CostContainer"
+		"buildingBuyContainer";
+	grid-template-rows: 1fr 2fr 1fr;
+	height: 200px;
+	width:800px;
+}
+.buildingTitle{
+	grid-area:buildingTitle;
+	background-color: #666666;
+	color:#ffffff;
+	display: flex;
+	flex-flow:column nowrap;
+}
+.counter{
+	background-color: #666600;
+	color: #ffffff;
+}
+.building{}
+.costContainer{
+	display: flex;
+	flex-flow:column nowrap;
+	grid-area:CostContainer;
+}
+.buildingBuyContainer{
+	grid-area:buildingBuyContainer;
+	display: contents;
+
+
+}
+
+.afford{
+	background-color: #00aa00;
+	color:#ffffff;
+	display:flex;
+	flex-flow: row nowrap;
+	white-space: 10px;
+}
+.cantAfford{
+	background-color: #aa0000;
+	color:#ffffff;
+		display:flex;
+
+	flex-flow: row nowrap;
+
+}
+.buyPrice{
+	color:#ff00ff;
+}
+.buildingBuyBTN{
+background-color:#60aa60;
+color:#ffffff;
+}
+.buildingNoBuyBTN{
+background-color:#555555;
+color:#ffffff;
+
+}
+.clickerBTN{
+	height:4vh;
+	width:6vw;
+	color:#ffffff;
+}
+.clickerBTN:hover{
+	color:#aaaaaa;
+}
+.clickerBTN:focus{
+	background-color:#555555;
+	border:solid;
+
+}

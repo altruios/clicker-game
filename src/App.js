@@ -20,6 +20,7 @@ class App extends React.Component
    this.checkBuyingStatus = this.checkBuyingStatus.bind(this);
    this.buyState = this.buyStatus.bind(this);
    this.handleBuildingBuy = this.handleBuildingBuy.bind(this);
+   this.unlock = this.unlock.bind(this);
   }
   gameTime()
     {
@@ -55,11 +56,34 @@ class App extends React.Component
   }
   handleBuildingBuy(event)  
     {
-    console.log(event.target);
     const name = event.target.name;
     const targetBuilding = this.state.buildings.find(building=>building.name === name)
     if(targetBuilding.isBuyable) 
       {
+      const unlocks = targetBuilding.unlocks;
+      if(unlocks.length>0)
+        {
+        unlocks.forEach(whatToUnlock=>
+          {
+          if(whatToUnlock.type == "resource")
+            {
+            this.setState((prevState)=>
+              {
+              const newResources = prevState.resources.map(resource=>
+                {
+                if(whatToUnlock.name === resource.name)
+                  {
+                  resource.isUnlocked = true;
+                }
+                return resource;
+              });
+              return {resources:newResources}
+            });
+          }
+
+
+        });
+      }
       this.buy(targetBuilding);
     }
   }
@@ -115,7 +139,11 @@ class App extends React.Component
       }
     });
 
-  }  
+  } 
+  unlock(whatToUnlock)
+    {
+    
+  } 
   handleClicker(event)
     {
     const {name, value} = event.target;  
@@ -245,9 +273,9 @@ class App extends React.Component
   return (
 
         <div className="App">
-        {buildings}
-        {resources}
-        {clickers}
+        <div className="buildingContainer">{buildings}</div>
+        <div className="resourceContainer">{resources}</div>
+        <div className="clickerContainer">{clickers}</div>
         </div>
        );
       }
