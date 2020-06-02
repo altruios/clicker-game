@@ -115,7 +115,7 @@ class App extends React.Component
           console.log(subAmount);
           console.log(resource.max);
           resource.max = Number((resource.max + buildingCount * subMax).toFixed(4));
-          resource.changePerTick = Number((resource.changePerTick + buildingCount*subAmount).toFixed(4));
+          resource.changePerTick = Number((0.001 + buildingCount*subAmount).toFixed(5));
         }
         return resource;
       });
@@ -126,7 +126,7 @@ class App extends React.Component
           build.count = build.count + 1;
           build.buyPrice.forEach(cost=>
             {
-            cost.cost = Number((cost.cost * 2.22).toFixed(4));
+            cost.cost = Number((cost.cost * build.increaseRatio).toFixed(4));
           })
 
         }
