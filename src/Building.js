@@ -7,9 +7,14 @@ function Building(props)
 		const buyClass = props.isBuyable ? "afford": "cantAfford"; 	
 		const PriceList = props.buyPrice.map(price=>
 			{
+			let costClass ="cantAfford";	
+			if(price.cost <= props.currentPrices.find(x=>x.name===price.name).amount)
+				{
+				costClass = "afford";
+			}	
 			return(
-				<div>
-					{price.name}: {price.cost} 	
+				<div key={price.name} className={costClass}>
+					{price.name}: <br />{price.cost} 	
 				</div>
 			)
 		})	
@@ -17,16 +22,16 @@ function Building(props)
 		return(
 
 		<div className="building">
-			<div className="buildingTitle"> BUY FOR:
+			<div className="buildingTitle"> {props.name}
 				
-				<div className={buyClass}>{PriceList}</div> 
+				<div className="priceContainer">BUY: {PriceList}</div> 
 				
 			</div>
 			 <div className="buildingBuyContainer">
 				{props.isBuyable ? 
-					<button name={props.name} onClick={props.handleBuildingBuy} className="buildingBuyBTN">{props.name}</button>
+					<button name={props.name} onClick={props.handleBuildingBuy} className="buildingBuyBTN">affordable</button>
 					:
-					<button name={props.name} className="buildingNoBuyBTN">{props.name}</button>
+					<button name={props.name} className="buildingNoBuyBTN">can't afford</button>
 				}
 			</div>
 			<div className="counter"> COUNT:{props.count}

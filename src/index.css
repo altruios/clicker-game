@@ -14,14 +14,16 @@ code {
 .App{
 	display:grid;
 	grid-template-areas:
-	" title title " 
-	" resourceContainer clickerContainer "
-	" resourceContainer buildingContainer ";
-	grid-template-columns: 1fr 2fr 4fr;
+	" title clickerContainer" 
+	" resourceContainer  buildingContainer"
+	" resourceContainer buildingContainer";
+	grid-template-columns: 1fr 2fr 1fr;
+	width: 100vw;
 }
 .title{
 	grid-area: title;
 	border:solid;
+	font-size:46px;
 
 }
 
@@ -35,6 +37,7 @@ code {
 .buildingContainer{
 	grid-area:buildingContainer;
 	display:flex;
+	width:100%;
 	flex-flow: row wrap;
 	overflow-y: scroll;
 	max-height: 90vh;
@@ -52,9 +55,9 @@ code {
 		"buildingTitle"
 		"CostContainer"
 		"buildingBuyContainer";
-	grid-template-rows: 1fr 2fr 1fr;
-	height: 200px;
-	width:800px;
+	grid-template-rows: 2fr 2fr 1fr;
+	height: 150px;
+	width:48%;
 }
 .buildingTitle{
 	grid-area:buildingTitle;
@@ -67,11 +70,18 @@ code {
 	background-color: #666600;
 	color: #ffffff;
 }
-.building{}
-.costContainer{
+.priceContainer{
 	display: flex;
-	flex-flow:column nowrap;
+	align-items: center;
+	flex-flow:row nowrap;
 	grid-area:CostContainer;
+
+}
+.priceContainer> div
+	{
+	vertical-align: center;
+	text-align: center;
+	width: 100%;	
 }
 .buildingBuyContainer{
 	grid-area:buildingBuyContainer;

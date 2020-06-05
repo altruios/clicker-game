@@ -230,6 +230,7 @@ class App extends React.Component
         <Building 
           key={buildingData.id}
           name ={buildingData.name}
+          currentPrices = {this.state.resources}
           handleBuildingBuy={this.handleBuildingBuy}
           buyPrice={buildingData.buyPrice}
           count = {buildingData.count}
