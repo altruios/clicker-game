@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/colorClicker/static/css/main.8f5a486c.chunk.css",
-    "main.js": "/colorClicker/static/js/main.16e0567f.chunk.js",
-    "main.js.map": "/colorClicker/static/js/main.16e0567f.chunk.js.map",
+    "main.js": "/colorClicker/static/js/main.377b9ed9.chunk.js",
+    "main.js.map": "/colorClicker/static/js/main.377b9ed9.chunk.js.map",
     "runtime-main.js": "/colorClicker/static/js/runtime-main.ca45a43f.js",
     "runtime-main.js.map": "/colorClicker/static/js/runtime-main.ca45a43f.js.map",
     "static/js/2.2bb09f73.chunk.js": "/colorClicker/static/js/2.2bb09f73.chunk.js",
     "static/js/2.2bb09f73.chunk.js.map": "/colorClicker/static/js/2.2bb09f73.chunk.js.map",
     "index.html": "/colorClicker/index.html",
-    "precache-manifest.0aadec88a732d2a01dfdce417e5c7c28.js": "/colorClicker/precache-manifest.0aadec88a732d2a01dfdce417e5c7c28.js",
+    "precache-manifest.a243881738e61a95ea8e380446b129cf.js": "/colorClicker/precache-manifest.a243881738e61a95ea8e380446b129cf.js",
     "service-worker.js": "/colorClicker/service-worker.js",
     "static/css/main.8f5a486c.chunk.css.map": "/colorClicker/static/css/main.8f5a486c.chunk.css.map",
     "static/js/2.2bb09f73.chunk.js.LICENSE.txt": "/colorClicker/static/js/2.2bb09f73.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.ca45a43f.js",
     "static/js/2.2bb09f73.chunk.js",
     "static/css/main.8f5a486c.chunk.css",
-    "static/js/main.16e0567f.chunk.js"
+    "static/js/main.377b9ed9.chunk.js"
   ]
 }
