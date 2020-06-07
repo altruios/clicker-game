@@ -308,6 +308,15 @@ class App extends React.Component
           }
           return item;
         })
+         const newResources = prevState.resources.map(resource=>{
+          buyPrice.forEach(price=>{
+            if(price.name === resource.name)
+              {
+              resource.amount = Number((resource.amount - price. cost).toFixed(4));
+            }
+          });
+                 return resource;
+        })
         const newUpgrades = prevState.upgrades.map(upgrade=>
           {
           if(upgrade.name === name) 
@@ -323,15 +332,8 @@ class App extends React.Component
           }
           return upgrade;
         })
-        const newResources = prevState.resources.map(resource=>{
-          buyPrice.forEach(price=>{
-            if(price.name === resource.name)
-              {
-              resource.amount = Number((resource.amount - price. cost).toFixed(4));
-            }
-          });
-          return resource;
-        })
+
+   
 
         return {[type]:newItems, upgrades:newUpgrades, resources: newResources}
 
