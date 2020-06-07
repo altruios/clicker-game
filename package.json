@@ -1,6 +1,6 @@
 {
   "homeage": "https://altruios.github.io/colorClicker",
-  "name": "clicker-game",
+  "name": "colorClicker",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
