@@ -286,6 +286,7 @@ class App extends React.Component
     const targetUpgrade = this.state.upgrades.find(x=>x.name===name);
     const type = targetUpgrade.type;
     const subjects = targetUpgrade.subjectsOfIncrease;
+    const buyPrice = targetUpgrade.buyPrice;
     subjects.forEach(subject=>
       {
       this.setState(prevState=>
@@ -322,9 +323,17 @@ class App extends React.Component
           }
           return upgrade;
         })
-      
+        const newResources = prevState.resources.map(resource=>{
+          buyPrice.forEach(price=>{
+            if(price.name === resource.name)
+              {
+              resource.amount = Number((resource.amount - price. cost).toFixed(4));
+            }
+          });
+          return resource;
+        })
 
-        return {[type]:newItems, upgrades:newUpgrades}
+        return {[type]:newItems, upgrades:newUpgrades, resources: newResources}
 
     });
     });
