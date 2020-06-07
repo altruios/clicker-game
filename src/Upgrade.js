@@ -1,24 +1,21 @@
 import React from 'react';
 
-function Building(props)
+function Upgrade(props)
 	{
 	if(props.isUnlocked)
 		{
-		const increaseMessage = `increase: ` + props.subjectData.map(data=>{
+		const buyClass = props.isBuyable ? "afford": "cantAfford"; 	
+		const subjectsOfUpgrade = props.subjectData.map(data=>{
 			return(
 				`${data.name} by ${data.amount}`
+
+
 				)
 		})
-
-
-		const buyClass = props.isBuyable ? "afford": "cantAfford"; 	
 		const PriceList = props.buyPrice.map(price=>
 			{
-			let costClass ="cantAfford";	
-			if(price.cost <= props.currentPrices.find(x=>x.name===price.name).amount)
-				{
-				costClass = "afford";
-			}	
+			const costClass = (price.cost <= props.currentPrices.find(x=>x.name===price.name).amount) ? "afford":"cantAfford";
+				
 			return(
 				<div key={price.name} className={costClass}>
 					{price.name}: <br />{price.cost} 	
@@ -28,7 +25,7 @@ function Building(props)
 
 		return(
 
-		<div className="building">
+		<div className="science">
 			<div className="buildingTitle"> {props.name}
 				
 				<div className="priceContainer">BUY: {PriceList}</div> 
@@ -36,19 +33,24 @@ function Building(props)
 			</div>
 			 <div className="buildingBuyContainer">
 				{props.isBuyable ? 
-					<button name={props.name} onClick={props.handleBuildingBuy} className="buildingBuyBTN">{increaseMessage}</button>
+					<button name={props.name} onClick={props.handleUpgrade} className="buildingBuyBTN">upgrade:{subjectsOfUpgrade}</button>
 					:
 					<button name={props.name} className="buildingNoBuyBTN">can't afford</button>
 				}
 			</div>
-			<div className="counter"> COUNT:{props.count}
+			<div className="count"> {props.count}
 		</div>
 		</div>
 
 		)
 	}
-	else{return null}
+	else{
+	 	return(
+	 	<div>
+	 		{props.isBuyable ?  `upgrade: Locked`: null}
+	 	</div>
+	 	)
+	}
+
 }
-
-
-export default Building;
+export default Upgrade;

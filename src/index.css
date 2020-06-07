@@ -14,10 +14,12 @@ code {
 .App{
 	display:grid;
 	grid-template-areas:
-	" title clickerContainer" 
-	" resourceContainer  buildingContainer"
-	" resourceContainer buildingContainer";
-	grid-template-columns: 1fr 2fr 1fr;
+	" title title title title "
+	" clickerContainer clickerContainer clickerContainer clickerContainer " 
+	" resourceContainer  buildingContainer scienceContainer traderContainer "
+	" resourceContainer buildingContainer scienceContainer traderContainer "
+	" upgradeContainer upgradeContainer upgradeContainer traderContainer " ;
+	grid-template-columns: 1fr 4fr 1fr 1fr;
 	width: 100vw;
 }
 .title{
@@ -32,6 +34,22 @@ code {
 	grid-area:resourceContainer;
 	display: flex;
 	flex-flow:column nowrap;
+
+}
+.upgradeContainer{
+	grid-area: upgradeContainer;
+}
+.traderContainer{
+	grid-area: traderContainer;
+		display:flex;
+	flex-flow:column wrap ;
+}
+.trader{
+width:40px;
+max-width:40px;
+}
+.scienceContainer{
+		grid-area:scienceContainer;
 
 }
 .buildingContainer{
@@ -89,7 +107,9 @@ code {
 
 
 }
-
+.science{
+	border:solid;
+}
 .afford{
 	background-color: #00aa00;
 	color:#ffffff;
